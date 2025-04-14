@@ -1,0 +1,47 @@
+{
+  "name": "pseudocode",
+  "displayName": "pseudocode-highlighter",
+  "description": "pseudocode",
+  "repository": "pseudocode",
+  "version": "1.0.0",
+  "engines": {
+    "vscode": "^1.99.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "pseudocode",
+        "aliases": [
+          "Pseudocode",
+          "pseudocode",
+          "pseudo",
+          "Pseudo"
+        ],
+        "extensions": [
+          ".psc"
+        ],
+        "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+        "language": "pseudocode",
+        "scopeName": "source.pseudocode",
+        "path": "./syntaxes/pseudocode.tmLanguage.json"
+      }
+    ]
+  },
+  "scripts": {
+    "build": "tsc",
+    "check": "node ./dist/cli/index.js"
+  },
+  "devDependencies": {
+    "@types/node": "^22.14.1",
+    "@types/vscode": "^1.99.1"
+  },
+  "dependencies": {
+    "chokidar": "^4.0.3",
+    "ts": "^0.2.2"
+  }
+}

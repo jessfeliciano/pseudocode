@@ -1,0 +1,277 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "Pseudocode",
+	"patterns": [
+		{ "include": "#keywords" },
+		{ "include": "#data-types" },
+		{ "include": "#comments" },		
+		{ "include": "#modules" },
+		{ "include": "#functions" },					  
+		{ "include": "#calls" },
+		{ "include": "#library-functions" }
+	],
+	"repository": {
+		"keywords": {
+			"patterns": [
+			{ "include": "#variables" },
+			{ "include": "#control-keywords" },
+			{
+				"match": "\\bTo\\b",
+				"name": "keyword.other"			
+			}
+		]}, 
+		"modules": {
+			"name": "meta.module.pseudocode",
+			"begin": "\\bModule\\b\\s+(\\w+)\\s*\\(\\)",
+			"beginCaptures": {
+			  "0": { "name": "keyword.declaration.module.pseudocode" },
+			  "1": { "name": "entity.name.module.pseudocode" }
+			},
+			"end": "\\bEnd Module\\b",
+			"endCaptures": {
+			  "0": { "name": "keyword.declaration.module.end.pseudocode" }
+			},
+			"patterns": [
+				{ "include": "#keywords" },
+				{ "include": "#data-types" },
+				{ "include": "#comments" },
+				{ "include": "#library-functions" },
+				{ "include": "#calls" },
+				{ "include": "#functions" }
+			]
+		},
+		"functions": {
+			"name": "meta.function.pseudocode",
+			"begin": "\\bFunction\\b\\s+(Integer|String|Real|Boolean)\\s+(\\w+)\\s*\\(([^)]*)\\)",
+			"beginCaptures": {
+			  "0": { "name": "keyword.declaration.function.pseudocode" },
+			  "1": { "name": "storage.type.return.pseudocode" },
+			  "2": { "name": "entity.name.function.pseudocode" },
+			  "3": { "name": "meta.function.parameters.pseudocode" }
+			},
+			"end": "\\bEnd Function\\b",
+			"endCaptures": {
+			  "0": { "name": "keyword.declaration.function.end.pseudocode" }
+			},
+			"patterns": [
+			  {
+				"match": "\\bReturn\\b",
+				"name": "keyword.control.pseudocode"
+			  },
+
+			  { "include": "#keywords" },
+			  { "include": "#data-types" },
+			  { "include": "#comments" },
+			  { "include": "#library-functions" },
+			  { "include": "#calls" }
+			]
+		  },
+		"variables":{
+			"patterns": [
+				{
+					"match": "\\bDeclare|Constant\\b\\s+(Integer|String|Real|Boolean|InputFile|OutputFile)\\s+(\\w+)",
+					"captures": {
+					  "0": { "name": "keyword.declaration.variable.pseudocode" },
+					  "1": { "name": "storage.type.pseudocode" },
+					  "2": { "name": "variable.other.pseudocode" }
+					}
+				},			  
+				{
+					"match": "\\bSet\\b\\s+(\\w+)",
+					"captures": {
+					  "0": { "name": "keyword.operator.assignment.pseudocode" },
+					  "1": { "name": "variable.other.pseudocode" }
+					}
+				}
+			]
+		},
+		"data-types":{
+			"patterns": [
+			{
+				"match": "\\b(Integer|String|Real|Boolean|InputFile|OutputFile)\\b\\s+(\\w+)",
+				"captures": {
+				  "1": { "name": "storage.type.parameter.pseudocode" },
+				  "2": { "name": "variable.parameter.pseudocode" }
+				}
+			  },
+			{ "include": "#values" }
+		]},
+		"comments": {
+			"patterns": [
+			{
+				"name": "comment.line.double-slash.pseudocode",
+				"match": "//.*$"
+			}, 
+			{
+				"name": "comment.block.pseudocode",
+				"begin": "/\\*",
+				"end": "\\*/"
+			}]
+		},
+		"control-keywords": {
+			"patterns": [
+			{
+				"match": "\\bIf|Else|Else If|Then|End If\\b",
+				"name": "keyword.control.conditional.pseudocode"
+			},
+			{
+				"match": "\\bFor\\s+Each\\b",
+				"name": "keyword.control.loop.foreach.pseudocode"
+			},
+			{
+				"match": "\\bFor\\b",
+				"name": "keyword.control.loop.for.pseudocode"
+			},
+			{
+				"match": "\\bDo\\b",
+				"name": "keyword.control.loop.do.pseudocode"
+			},
+			{
+				"match": "\\bWhile\\b",
+				"name": "keyword.control.loop.while.pseudocode"
+			},
+			{
+				"match": "\\bEnd\\s+For\\b",
+				"name": "keyword.control.loop.endfor.pseudocode"
+			},
+			{
+				"match": "\\bEnd\\s+Do\\b",
+				"name": "keyword.control.loop.enddo.pseudocode"
+			},
+			{
+				"match": "\\bEnd\\s+While\\b",
+				"name": "keyword.control.loop.endwhile.pseudocode"
+			},
+			{ "include": "#select-case" }
+		]},
+		"values": {
+			"patterns": [			
+			{
+				"name": "string.quoted.double.pseudocode",
+				"begin": "\"",
+				"end": "\"",
+				"patterns": [
+					{
+						"name": "constant.character.escape.pseudocode",
+						"match": "\\\\."
+					}
+				]
+			},
+			{
+				"match": "\\bTrue|False\\b",
+				"name": "constant.language.boolean.pseudocode"
+			},			  
+			{
+				"match": "\\s*\\d+\\b",
+				"captures": {
+				  "0": { "name": "constant.numeric.integer.pseudocode" }
+				}
+			},
+			{
+				"match": "\\s*\\d+\\.\\d+\\b",
+				"captures": {
+				  "0": { "name": "constant.numeric.real.pseudocode" }
+				}
+			}
+			]
+		},
+		"calls": {
+			"name": "meta.function.call.pseudocode",
+			"begin": "\\bCall\\b\\s+(\\w+)\\s*\\(",
+			"beginCaptures": {
+			  "0": { "name": "keyword.other.call.pseudocode" },
+			  "1": { "name": "entity.name.function.call.pseudocode" }
+			},
+			"end": "\\)",
+			"endCaptures": {
+				"0": { "name": "meta.function.call.pseudocode" }
+			},
+			"patterns": [
+				{ "include": "#data-types" }		  
+			]
+		},
+		"library-functions": {
+			"patterns": [
+				{
+					"match": "\\b(length|random|sqrt|pow|abs|cos|sin|tan|toInteger|toReal|isInteger|isReal|currencyFormat|append|round|toUpper|toLower|substring|contains|stringToInteger|stringToReal)\\b(?=\\s*\\()",
+					"name": "support.function.library.pseudocode"
+				},
+				{
+					"match": "\\bDisplay\\b",
+					"captures": {
+						"0": { "name": "keyword.function.display.pseudocode" }   
+					  }
+				},
+				{
+					"match": "\\bInput\\b\\s+(\\w+)",
+					"captures": {
+						"0": { "name": "keyword.function.input.pseudocode" },
+						"1": { "name": "variable.other.pseudocode" }
+					}
+				},
+				{
+					"match": "\\bOpen|Close|Read|Write\\b\\s+(InputFile|OutputFile)\\s+(\\w+)",
+					"captures": {
+					  "0": { "name": "keyword.function.file.pseudocode" },
+					  "1": { "name": "storage.type.pseudocode" }
+					}
+				}
+			]
+		},
+		"operators": {
+			"patterns": [
+				{
+					"match": "\\b(AND|OR|NOT)\\b",
+					"name": "keyword.operator.logical.pseudocode"
+				},
+				{
+					"match": "\\+|\\-|\\*|\\|==|!=|<=|>=|<|>",
+					"name": "keyword.operator.pseudocode"
+				},
+				{
+					"match": "(?<!\\w)(\\+|\\-|\\*|/|\\^)(?!\\w)",
+					"name": "keyword.operator.arithmetic.symbol.pseudocode"
+				},
+				{
+					"match": "\\bMOD\\b",
+					"name": "keyword.operator.arithmetic.word.pseudocode"
+				},    
+				{
+					"match": "(?<!\\w)(==|!=|>=|<=|>|<)(?!\\w)",
+					"name": "keyword.operator.relational.pseudocode"
+				}
+			]
+		},
+		"select-case": {
+			"name": "meta.select-case.pseudocode",
+			"begin": "\\bSelect\\b\\s+(\\w+)",
+			"beginCaptures": {
+			  "0": { "name": "keyword.control.select.pseudocode" },
+			  "1": { "name": "variable.parameter.pseudocode" }
+			},
+			"end": "\\bEnd Select\\b",
+			"endCaptures": {
+			  "0": { "name": "keyword.control.select.end.pseudocode" }
+			},
+			"patterns": [
+			  {
+				"match": "\\bCase\\b\\s+([^:]+):",
+				"captures": {
+				  "0": { "name": "keyword.control.case.pseudocode" },
+				  "1": { "name": "constant.language.case.value.pseudocode" }
+				}
+			  },
+			  {
+				"match": "\\bDefault\\b:",
+				"name": "keyword.control.default.pseudocode"
+			  },
+			  { "include": "#data-types" },
+			  { "include": "#comments" },
+			  { "include": "#variables" },
+			  { "include": "#calls" },
+			  { "include": "#library-functions" }
+			]
+		  }				
+	},
+	"scopeName": "source.pseudocode"
+}

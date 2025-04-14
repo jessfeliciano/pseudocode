@@ -1,0 +1,17 @@
+# Ignore source and config files
+src/
+cli/
+watch.ts
+.vscode/
+test/
+tsconfig.json
+.vscodeignore
+*.log
+
+# Ignore build tools and unnecessary assets
+package-lock.json
+webpack.config.js
+jest.config.js
+
+# Ignore everything except compiled output
+!dist/**
