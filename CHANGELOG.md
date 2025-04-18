@@ -29,3 +29,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - All highlighting is handled via a `tmLanguage.json` grammar definition.
 - Nested constructs like parameters and function calls support data type recognition.
 
+## [1.0.0] - 2025-04-13
+### Added
+- Syntax highlighting for:
+  - Control flow keywords nested inside Select Cases
