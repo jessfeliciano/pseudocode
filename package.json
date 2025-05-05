@@ -1,9 +1,16 @@
 {
   "name": "pseudocode",
-  "displayName": "pseudocode-highlighter",
-  "description": "pseudocode",
+  "displayName": "Pseudocode Language Support",
+  "description": "Provides syntax highlighting, TODO detection, and CLI validation for a custom pseudocode language.",
+  "publisher": "Jessica Feliciano",
+  "license": "CC-BY-NC-4.0",
+  "author": {
+    "name": "Jessica Feliciano",
+    "url": "https://github.com/jessfeliciano"
+  },
+  "icon": "media/logo-small-white.png",
   "repository": "pseudocode",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "engines": {
     "vscode": "^1.99.0"
   },
