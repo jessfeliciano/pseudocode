@@ -22,7 +22,7 @@
 		]}, 
 		"modules": {
 			"name": "meta.module.pseudocode",
-			"begin": "\\bModule\\b\\s+(\\w+)\\s*\\(\\)",
+			"begin": "\\bModule\\b\\s+(\\w+)\\s*\\((.*?)\\)",
 			"beginCaptures": {
 			  "0": { "name": "keyword.declaration.module.pseudocode" },
 			  "1": { "name": "entity.name.module.pseudocode" }
@@ -269,7 +269,8 @@
 			  { "include": "#comments" },
 			  { "include": "#variables" },
 			  { "include": "#calls" },
-			  { "include": "#library-functions" }
+			  { "include": "#library-functions" },
+			  { "include": "#control-keywords" }
 			]
 		  }				
 	},
