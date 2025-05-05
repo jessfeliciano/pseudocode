@@ -41,7 +41,38 @@ End Function
 
 ## Requirements
 
-No additional dependencies required. Just install and start coding!
+No additional dependencies required. Just locally install and start coding!
+
+---
+
+## Installation Instructions
+
+Though this extension is not published to the Visual Studio Code Marketplace, you can still install and use it locally by following these steps:
+
+### 1. Package this extension
+
+Open this repository in VS Code and run the following `vsce` command package the extension:
+
+```
+npm install vsce
+vsce package
+```
+
+This will generate a `.vsix` file that will look something like this: `pseudocode-1.0.0.vsix`
+
+### 2. Install the `.vsix` File to VS Code
+
+Now that we've generated the `.vsix` file, we will now need to run a command to install the extension locally. There are two ways to do this: 
+
+1. Run a command with that file name:
+
+```
+code --install-extension pseudocode-1.0.0.vsix
+```
+
+2. Open VS Code's Command Palette and type `Install from VSIX`and select the `.vsix` file you just generated.
+
+### 3. Start pseudocoding by creating a file with the extension `.psc`
 
 ---
 
@@ -62,6 +93,12 @@ This extension does not contribute any VS Code settings at this time.
 
 ### 1.0.0
 Initial release with foundational highlighting.
+
+### 1.0.1
+Adds syntax highlighting for control flow keywords nested inside Select Cases.
+
+### 1.0.2
+Adds installation instructions to README.md and extension logo.
 
 ---
 
