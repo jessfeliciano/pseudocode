@@ -1,7 +1,7 @@
 {
   "name": "pseudocode",
   "displayName": "Pseudocode Language Support",
-  "description": "Provides syntax highlighting, TODO detection, and CLI validation for a custom pseudocode language.",
+  "description": "Provides syntax highlighting for a custom pseudocode language.",
   "publisher": "Jessica Feliciano",
   "license": "CC-BY-NC-4.0",
   "author": {
@@ -10,7 +10,7 @@
   },
   "icon": "media/logo-small-white.png",
   "repository": "pseudocode",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "engines": {
     "vscode": "^1.99.0"
   },
@@ -31,8 +31,10 @@
           ".psc"
         ],
         "configuration": "./language-configuration.json"
-    }],
-    "grammars": [{
+      }
+    ],
+    "grammars": [
+      {
         "language": "pseudocode",
         "scopeName": "source.pseudocode",
         "path": "./syntaxes/pseudocode.tmLanguage.json"
@@ -49,6 +51,7 @@
   },
   "dependencies": {
     "chokidar": "^4.0.3",
-    "ts": "^0.2.2"
+    "ts": "^0.2.2",
+    "vsce": "^2.15.0"
   }
 }
