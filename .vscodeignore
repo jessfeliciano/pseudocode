@@ -15,3 +15,4 @@ jest.config.js
 
 # Ignore everything except compiled output
 !dist/**
+node_modules/

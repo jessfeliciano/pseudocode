@@ -38,3 +38,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Instructions to the `README.md` for installing the extension locally via `.vsix` file.
 - A extension logo to visually represent the extension in the Extensions view.
+
+## [1.0.3] - 2025-05-07
+### Added
+- Installs `vsce` package
+- Updates instructions to the `README.md` for extension installation
