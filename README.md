@@ -54,7 +54,6 @@ Though this extension is not published to the Visual Studio Code Marketplace, yo
 Open this repository in VS Code and run the following `vsce` command package the extension:
 
 ```
-npm install vsce
 vsce package
 ```
 
@@ -96,9 +95,6 @@ Initial release with foundational highlighting.
 
 ### 1.0.1
 Adds syntax highlighting for control flow keywords nested inside Select Cases.
-
-### 1.0.2
-Adds installation instructions to README.md and extension logo.
 
 ---
 
